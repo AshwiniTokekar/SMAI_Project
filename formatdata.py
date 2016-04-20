@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+<<<<<<< HEAD
+=======
+# -*- coding : utf-8 -*-
+import json
+>>>>>>> 48144eefb65564bd94c5d44706745b8e7a8b433c
 from json import JSONEncoder
 import sys;
 #This module reads data and converts it to json objects and writes in a file
@@ -32,7 +37,11 @@ def dataextraction():
 					if paper_inf!="":
 						writer.write(paper_inf+"\n")
 				print line
+<<<<<<< HEAD
 				temp+=line.decode('utf-8').strip()
+=======
+				temp+=line.encode('utf-8').strip()
+>>>>>>> 48144eefb65564bd94c5d44706745b8e7a8b433c
 				temp+="\n"
 					
 	
@@ -41,6 +50,10 @@ def dataextraction():
 
 def main():
 	reload(sys)  
+<<<<<<< HEAD
 	sys.setdefaultencoding("ISO-8859-1")
+=======
+	sys.setdefaultencoding('utf8')
+>>>>>>> 48144eefb65564bd94c5d44706745b8e7a8b433c
 	dataextraction()
 main()
