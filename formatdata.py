@@ -21,9 +21,12 @@ def getdata(input):
 				s+=","				
 	s=s.split(",")	
 	del s[-1]
-	return JSONEncoder().encode({"id" :index, "title" :title, "authors": authors, "year ":time , "citations" : s, "conference":conf})
+	obj = JSONEncoder().encode({"id" :index, "title" :title, "authors": authors, "year ":time , "references" : s, "conference":conf})
+#	print type(obj)
+	return obj
 def dataextraction():
 	writer=open(sys.argv[2],"w")
+	json_obj=[]
 	with open(sys.argv[1]) as reader :
 		temp =""
 		for line in reader :
@@ -31,11 +34,10 @@ def dataextraction():
 					paper_inf = getdata(temp)
 					temp=""
 					if paper_inf!="":
+						#print type(paper_inf)
 						writer.write(paper_inf+"\n")
-				print line
-
-				temp+=line.decode('utf-8').strip()
-				temp+=line.encode('utf-8').strip()
+			
+				temp+=line.strip()
 				temp+="\n"
 					
 	
@@ -43,8 +45,5 @@ def dataextraction():
 	writer.close()
 
 def main():
-	reload(sys)  
-	sys.setdefaultencoding("ISO-8859-1")
-	sys.setdefaultencoding('utf8')
 	dataextraction()
 main()
