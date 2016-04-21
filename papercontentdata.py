@@ -2,7 +2,9 @@ import json
 from collections import defaultdict
 import unicodedata
 import sys
-
+#Finding paper based features : The size of the team that wrote the paper 
+#The number of references mentioned in the paper
+#And storing them as json object
 team_size = defaultdict(int) 
 refcount = defaultdict(int)
 rdi = defaultdict(set)

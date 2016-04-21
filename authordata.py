@@ -4,6 +4,7 @@ import sys
 from collections import defaultdict
 import unicodedata
 #Code for finding author related features in dataset
+#author sociality,productivity,hindex,diversity and storing them as json objects
 def main():
 	authors = defaultdict(set)
 	conferences = defaultdict(set)

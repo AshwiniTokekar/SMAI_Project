@@ -2,10 +2,12 @@ import json
 from collections import defaultdict
 import unicodedata
 import sys
-
+#Calculating reference diversity index
+#Creating two dictionaries for citations and conference in which paper is published.
+#Then for each citation checking in conference dictionary in which conference the paper has been published and then adding to the list
 print "calculating RDI"    
 # calculating RDI     
-writer = open("./Dataset/RDI.json","w")
+writer = open("./Dataset/RDI1.json","w")
 papers =defaultdict(list)
 p_id=[]
 conference = defaultdict(str)
@@ -23,7 +25,7 @@ for p in p_id:
 	conf_list=set() 
 	for c in papers[p] :
 		conf_list.add(conference[c])
-	obj = json.JSONEncoder().encode({"id" : unicodedata.normalize('NFKD', p).encode('ascii','ignore') , "RDI" : list(conf_list) })
+	obj = json.JSONEncoder().encode({"RDI" : len(list(conf_list)) })
 	writer.write(obj+"\n")
 reader.close()
 writer.close()
